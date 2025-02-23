@@ -1,0 +1,16 @@
+{% extends 'recipe_base.html' %}
+
+{% block title %}Recipe Book{% endblock %}
+
+{% block content %}
+    <center>
+    <h1>Recipe Book</h1></center>
+    <br>
+    <b>{{ name }}</b>
+        <ul>
+            {% for ingredient in ingredients %}
+                <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+            {% endfor %}
+        </ul>
+    <a href="/recipes/list/">return</a>
+{% endblock %}
