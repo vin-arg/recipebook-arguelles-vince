@@ -6,11 +6,13 @@
     <center>
     <h1>Recipe Book</h1></center>
     <br>
-    <b>{{ name }}</b>
+    <b>{{ recipe.name }}</b>
         <ul>
             {% for ingredient in ingredients %}
-                <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+                <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
+            {% empty %}
+                <li>No ingredients available</li>
             {% endfor %}
         </ul>
-    <a href="/recipes/list/">return</a>
+    <a href="/recipes/list/">Back to Recipes</a>
 {% endblock %}
