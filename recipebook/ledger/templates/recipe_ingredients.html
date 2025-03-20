@@ -4,9 +4,25 @@
 
 {% block content %}
     <center>
-    <h1>Recipe Book</h1></center>
+    <h1>Recipe Book</h1>
+    </center>
+
+    <div>
+        {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="nav-link" type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+
     <br>
     <b>{{ recipe.name }}</b>
+    <br>
+    <b>by: {{author_name}}</b>
         <ul>
             {% for ingredient in ingredients %}
                 <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
