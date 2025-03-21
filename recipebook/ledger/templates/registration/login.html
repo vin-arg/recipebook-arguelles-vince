@@ -1,18 +1,17 @@
-{% extends 'recipe_base.html' %}
-
-{% block title %}Login{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Recipe Book</title>
+</head>
+<body>
     <h1>Login Page</h1>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-
         <input type="hidden" name="next" value="{% url 'recipes' %}">
-        <a href="{% url 'password_reset' %}"> Forgot password</a>
-        <br>
-        <br>
+        <a href="{% url 'password_reset' %}">Forgot password?</a>
+        <br><br>
         <button type="submit">Login</button>
     </form>
-
-{% endblock %}
+</body>
+</html>
