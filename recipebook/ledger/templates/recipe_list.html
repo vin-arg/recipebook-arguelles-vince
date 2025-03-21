@@ -3,7 +3,23 @@
 {% block title %}Recipe Book{% endblock %}
 
 {% block content %}
+    <center>
     <h1>Recipe Book</h1>
+    </center>
+
+    <div>
+        {% if user.is_authenticated %}
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="hidden" name="next" value="{% url 'login' %}">
+                <button class="nav-link" type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+
     <ul>
     {% for recipe in recipes %}
             <li>

@@ -1,14 +1,26 @@
 from django.contrib import admin
-from .models import Ingredient, Recipe, RecipeIngredient
+from .models import Ingredient, Recipe, RecipeIngredient, Profile
+from django.contrib.auth.models import User
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'author', 'created_on', 'updated_on',)
 
 class RecipeIngredientAdmin(admin.ModelAdmin):
     list_display = ('quantity', 'ingredient', 'recipe',)
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+
+class UserAdmin(admin.ModelAdmin):
+    inlines = [ProfileInline]
+
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Recipe, RecipeAdmin)
