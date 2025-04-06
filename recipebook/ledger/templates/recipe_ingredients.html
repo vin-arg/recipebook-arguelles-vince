@@ -31,5 +31,15 @@
                 <li>No ingredients available</li>
             {% endfor %}
         </ul>
+
+        <b> Add Ingredients </b>
+
+        <form method ="post">
+            {% csrf_token %}
+            {{ ingredients_form.as_p }}
+            <button type="submit">Add</button>
+        </form>
+    
+    
     <a href="/recipes/list/">Back to Recipes</a>
 {% endblock %}
