@@ -16,7 +16,7 @@
                 <button class="nav-link" type="submit">Logout</button>
             </form>
         {% else %}
-            <button href="{% url 'login' %}">Login</button>
+            <a href="{% url 'login' %}">Login</a>
         {% endif %}
     </div>
 
@@ -26,5 +26,8 @@
             <a href="{% url 'recipe_ingredients' num=recipe.id %}">{{ recipe.name }}</a>
             </li>
     {% endfor %}
-</ul>
+    </ul>
+    
+    <a href="{% url 'recipe_add' %}"> Add Recipe</a>
+
 {% endblock %}

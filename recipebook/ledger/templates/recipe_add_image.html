@@ -1,0 +1,21 @@
+{% extends 'recipe_base.html' %}
+
+{% block title %}Recipe Book{% endblock %}
+
+{% block content %}
+    <center>
+    <h1>Recipe Book</h1>
+    </center>
+    
+    <b> Add Image</b>
+
+    <form method ="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ image_form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+
+
+    <br>
+    <a href="/recipes/list/">Back to Recipes</a>
+{% endblock %}
