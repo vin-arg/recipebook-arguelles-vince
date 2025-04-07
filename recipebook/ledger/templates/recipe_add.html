@@ -16,5 +16,25 @@
     </form>
 
     <br>
+
+    <b> Add Ingredients</b>
+
+    <form method ="post">
+        {% csrf_token %}
+        {{ ingredient_form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+
+    <br>
+
+    <b> Add Ingredients to Recipe</b>
+
+    <form method ="post">
+        {% csrf_token %}
+        {{ recipe_ingredient_form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+
+    <br>
     <a href="/recipes/list/">Back to Recipes</a>
 {% endblock %}
